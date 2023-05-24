@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 @immutable
 class DlButton extends StatelessWidget {
    const DlButton(
-      {super.key, required this.buttonName, required this.size, required this.buttonColor, required this.onPressed,  this.onLongPressed});
+      {super.key, required this.buttonName, required this.size, required this.buttonColor, required this.onPressed});
 
   final String buttonName;
   final ButtonSize? size;
   final Color buttonColor;
   final VoidCallback onPressed;
-  final VoidCallback? onLongPressed;
 
   double selectSize(BuildContext context) {
     if (size == ButtonSize.small) {
@@ -44,7 +43,6 @@ class DlButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0)
       )// Background color
       ),
-      onLongPress: onLongPressed,
       child: Padding(padding: EdgeInsets.symmetric(
           horizontal: selectSize(context), vertical: 10),
           child: Text(buttonName, style:
