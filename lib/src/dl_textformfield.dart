@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DlTextFormField extends StatefulWidget {
-  const DlTextFormField({super.key, this.activeColor, this.trailingIcon, this.isPassword, this.onChanged, required this.textFieldController, this.labelText, this.isCenter});
+  const DlTextFormField({super.key, this.activeColor, this.trailingIcon, this.isPassword, this.onChanged, required this.textFieldController, this.labelText, this.isCenter, this.errorText});
   final Color? activeColor;
   final Widget? trailingIcon;
   final bool? isPassword;
@@ -9,6 +9,7 @@ class DlTextFormField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final String? labelText;
   final bool? isCenter;
+  final String? errorText;
 
   @override
   State<DlTextFormField> createState() => _DlTextFormFieldState();
@@ -51,13 +52,13 @@ class _DlTextFormFieldState extends State<DlTextFormField> {
       onChanged: widget.onChanged,
       autocorrect: widget.isPassword??false,
       decoration: InputDecoration(
+        errorText: widget.errorText,
           fillColor: Colors.white,
           filled: true,
-          suffixIcon: widget.isPassword??false ? passwordIcon() : null,
+          suffixIcon: widget.isPassword??false ? passwordIcon() : widget.trailingIcon??null,
           border: getOutlineBorder(widget.activeColor??Colors.blue),
           errorBorder: getOutlineBorder(Colors.red),
           enabledBorder: getOutlineBorder(widget.activeColor??Colors.blue),
-          icon: widget.trailingIcon,
           labelText: widget.labelText
       ),
     )));
