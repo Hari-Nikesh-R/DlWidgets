@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 
 class DlTextFormField extends StatefulWidget {
-  const DlTextFormField({super.key, this.activeColor, this.trailingIcon, this.isPassword, this.onChanged, required this.textFieldController, this.labelText, this.isCenter, this.errorText});
+  const DlTextFormField({super.key, this.activeColor, this.trailingIcon, this.isPassword, this.isCenter, required this.input});
   final Color? activeColor;
   final Widget? trailingIcon;
   final bool? isPassword;
-  final TextEditingController textFieldController;
-  final ValueChanged<String>? onChanged;
-  final String? labelText;
   final bool? isCenter;
-  final String? errorText;
+  final DlTextFormFieldImpl input;
 
   @override
   State<DlTextFormField> createState() => _DlTextFormFieldState();
@@ -46,22 +43,31 @@ class _DlTextFormFieldState extends State<DlTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(padding: widget.isCenter??false ? EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/3.5) : EdgeInsets.zero, child: Padding(padding: EdgeInsets.all(12), child: TextFormField(
-      controller: widget.textFieldController,
+      controller: widget.input.textFieldController,
       obscureText:isObscured,
       maxLines: 1,
-      onChanged: widget.onChanged,
+      onChanged: widget.input.onChanged,
       autocorrect: widget.isPassword??false,
       decoration: InputDecoration(
-        errorText: widget.errorText,
+        errorText: widget.input.errorText,
           fillColor: Colors.white,
           filled: true,
-          suffixIcon: widget.isPassword??false ? passwordIcon() : widget.trailingIcon??null,
+          suffixIcon: widget.isPassword??false ? passwordIcon() : widget.trailingIcon,
           border: getOutlineBorder(widget.activeColor??Colors.blue),
           errorBorder: getOutlineBorder(Colors.red),
           enabledBorder: getOutlineBorder(widget.activeColor??Colors.blue),
-          labelText: widget.labelText
+          labelText: widget.input.labelText
       ),
     )));
   }
+}
+
+class DlTextFormFieldImpl{
+  DlTextFormFieldImpl(this.textFieldController, this.onChanged, this.errorText, this.labelText);
+   TextEditingController textFieldController;
+   ValueChanged<String>? onChanged;
+   String? labelText;
+   String? errorText;
+
 }
 
