@@ -17,8 +17,7 @@ class _DlRadioButtonState extends State<DlRadioButton> {
     List<Widget> list = [];
     for(var index = 0;index < widget.dlRadioButtonImplList.length;index++) {
       list.add(
-          Expanded(
-              flex: 3,
+          Flexible(
               child: Radio(
               value: widget.dlRadioButtonImplList[index].value,
               groupValue: _value,
@@ -29,7 +28,7 @@ class _DlRadioButtonState extends State<DlRadioButton> {
               })));
       list.add(
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 4),
             child: Text(
               widget.dlRadioButtonImplList[index].radioButtonMessage,
               style: TextStyle(
