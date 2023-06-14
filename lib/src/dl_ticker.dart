@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
+/// Represents a ticker widget to display information with an icon.
 class DlTicker extends StatefulWidget {
+  /// Constructs a DlTicker widget.
   const DlTicker({super.key, this.tickerType, required this.textInfo, this.customIcon});
+
+  /// Specifies the type of the ticker (success, error, info, warning).
   final TickerType? tickerType;
+
+  /// Specifies the text information to display in the ticker.
   final String textInfo;
+
+  /// Specifies the custom icon to display in the ticker.
   final IconData? customIcon;
 
   @override
@@ -21,6 +29,7 @@ class _DlTickerState extends State<DlTicker> {
     super.initState();
   }
 
+  /// Determines the color of the ticker based on its type.
   Color tickerColor(){
     switch(widget.tickerType){
       case TickerType.success:
@@ -76,6 +85,7 @@ class _DlTickerState extends State<DlTicker> {
   }
 }
 
+/// Represents the type of the ticker.
 enum TickerType{
   info, success, warning, error
 }

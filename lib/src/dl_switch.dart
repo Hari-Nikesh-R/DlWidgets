@@ -1,9 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// Represents a custom switch widget.
 class DlSwitch extends StatefulWidget {
+
+  /// Constructs a DlSwitch widget.
   const DlSwitch({super.key, this.activeColor, this.dlSwitchType});
+
+  /// Specifies the active color of the switch.
   final Color? activeColor;
+
+  /// Specifies the type of the switch (sunMoon, custom).
   final DlSwitchType? dlSwitchType;
 
   @override
@@ -104,6 +111,7 @@ class _DlSwitchState extends State<DlSwitch> with SingleTickerProviderStateMixin
   }
 }
 
+/// Specifies the types of switches for the DlSwitch widget.
 enum DlSwitchType{
   sunMoon, custom
 }

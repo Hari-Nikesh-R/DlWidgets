@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 
+/// Represents a custom text form field widget.
 class DlTextFormField extends StatefulWidget {
+  /// Constructs a DlTextFormField widget.
   const DlTextFormField({super.key, this.activeColor, this.trailingIcon, this.isPassword, this.isCenter, required this.input});
+
+  /// Specifies the active color of the text form field.
   final Color? activeColor;
+
+  /// Specifies the trailing icon widget for the text form field.
   final Widget? trailingIcon;
+
+  /// Specifies whether the text form field is a password field.
   final bool? isPassword;
+
+  /// Specifies whether the text form field should be centered.
   final bool? isCenter;
+
+  /// Specifies the configuration for the text form field.
   final DlTextFormFieldImpl input;
 
   @override
@@ -62,12 +74,22 @@ class _DlTextFormFieldState extends State<DlTextFormField> {
   }
 }
 
+/// Represents the configuration for a DlTextFormField widget.
 class DlTextFormFieldImpl{
+  /// Constructs a DlTextFormFieldImpl object.
   DlTextFormFieldImpl(this.textFieldController, this.onChanged, this.errorText, this.labelText);
-   TextEditingController textFieldController;
-   ValueChanged<String>? onChanged;
-   String? labelText;
-   String? errorText;
+
+  /// Specifies the text field controller for the text form field.
+  TextEditingController textFieldController;
+
+  /// Specifies the callback function to invoke when the value of the text form field changes.
+  ValueChanged<String>? onChanged;
+
+  /// Specifies the label text for the text form field.
+  String? labelText;
+
+  /// Specifies the error text to display for the text form field.
+  String? errorText;
 
 }
 

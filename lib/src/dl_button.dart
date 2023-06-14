@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 
+/// Represents a custom button widget.
 @immutable
 class DlButton extends StatelessWidget {
-   const DlButton(
+  /// Constructs a DlButton widget.
+  const DlButton(
       {super.key, required this.buttonName, required this.size, required this.buttonColor, required this.onPressed});
 
+  /// Specifies the name of the button.
   final String buttonName;
+
+  /// Specifies the size of the button (large, medium, small).
   final ButtonSize? size;
+
+  /// Specifies the background color of the button.
   final Color buttonColor;
+
+  /// Specifies the callback function to be executed when the button is pressed.
   final VoidCallback onPressed;
 
+  /// Determines the size of the button based on the specified size and the device's width.
   double selectSize(BuildContext context) {
     if (size == ButtonSize.small) {
       return MediaQuery
@@ -56,6 +66,7 @@ class DlButton extends StatelessWidget {
   }
 }
 
+/// Specifies the size options for the DlButton widget.
 enum ButtonSize{
   large, medium, small
 }

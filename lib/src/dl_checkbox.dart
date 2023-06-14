@@ -1,12 +1,23 @@
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
 
+///This documentation explains the purpose and functionality of each class, method, and property in the provided code. It provides information about the constructors, parameters, and return types, as well as the enums used for specifying checkbox orientation and shape.
+//
+// Note that the documentation assumes basic familiarity with the Dart programming language and the Flutter framework. If you have any specific questions about the code or need further clarification, feel free to ask!
 
+/// Represents a custom checkbox widget.
 class DlCheckBox extends StatefulWidget {
+
+  /// Constructs a DlCheckBox widget.
   const DlCheckBox({super.key, required, required this.checkBoxOrientation, required this.dlCheckBoxImplList, this.checkBoxShape });
+
+  /// Specifies the orientation of the checkboxes (row or column).
   final CheckBoxOrientation checkBoxOrientation;
+
+  /// Contains a list of DlCheckBoxImpl objects.
   final List<DlCheckBoxImpl> dlCheckBoxImplList;
+
+  /// Specifies the shape of the checkbox (round or box).
   final CheckBoxShape? checkBoxShape;
 
   @override
@@ -23,7 +34,8 @@ class _DlCheckBoxState extends State<DlCheckBox> {
      super.initState();
    }
 
-  List<Widget> getCheckBoxes(){
+   /// Returns a list of checkbox widgets.
+   List<Widget> getCheckBoxes(){
     List<Widget> list = [];
     for(var index=0;index<widget.dlCheckBoxImplList.length;index++) {
         list.add(Row(children: [Checkbox(
@@ -59,21 +71,35 @@ class _DlCheckBoxState extends State<DlCheckBox> {
   }
 }
 
+/// Represents the properties of a checkbox.
 class DlCheckBoxImpl{
-    DlCheckBoxImpl({required this.value, required this.checkBoxMessage, this.activeColor, this.fontSize, this.fontFamily, this.textColor});
-    final bool value;
-    late double? fontSize;
-    late String? fontFamily;
-    final String checkBoxMessage;
-    final Color? activeColor;
-    late Color? textColor;
+  /// Constructs a DlCheckBoxImpl object.
+  DlCheckBoxImpl({required this.value, required this.checkBoxMessage, this.activeColor, this.fontSize, this.fontFamily, this.textColor});
+  /// Specifies the value of the checkbox.
+  final bool value;
+
+  /// Specifies the font size of the checkbox's message.
+  late double? fontSize;
+
+  /// Specifies the font family of the checkbox's message.
+  late String? fontFamily;
+
+  /// Specifies the message of the checkbox.
+  final String checkBoxMessage;
+
+  /// Specifies the color of the checkbox when checked.
+  final Color? activeColor;
+
+  /// Specifies the text color of the checkbox
+  late Color? textColor;
 
 }
-
+/// Specifies the orientation of the checkboxes (row or column).
 enum CheckBoxOrientation{
   row, column
 }
 
+/// Specifies the shape of the checkboxes (round or box).
 enum CheckBoxShape{
   round, box
 }

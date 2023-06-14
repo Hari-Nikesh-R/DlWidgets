@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
+/// Represents a custom radio button widget.
 class DlRadioButton<T> extends StatefulWidget {
+  /// Constructs a DlRadioButton widget.
   const DlRadioButton(
       {super.key,
       required this.dlRadioButtonImplList,
       required this.intention});
 
+  /// Contains a list of DlRadioButtonImpl objects.
   final List<DlRadioButtonImpl> dlRadioButtonImplList;
+
+  /// Specifies the intention of the radio buttons (row or column).
   final Intention intention;
 
   @override
@@ -17,6 +22,7 @@ class _DlRadioButtonState extends State<DlRadioButton> {
   Color focussedColor = Colors.white;
   dynamic _value;
 
+  /// Returns a list of radio button widgets.
   List<Widget> getRadioButtons() {
     List<Widget> list = [];
     for (var index = 0; index < widget.dlRadioButtonImplList.length; index++) {
@@ -55,8 +61,9 @@ class _DlRadioButtonState extends State<DlRadioButton> {
               ));
   }
 }
-
+/// Represents the properties of a radio button.
 class DlRadioButtonImpl<T> {
+  /// Constructs a DlRadioButtonImpl object.
   DlRadioButtonImpl(
       {required this.value,
       this.textColor,
@@ -64,11 +71,21 @@ class DlRadioButtonImpl<T> {
       this.fontFamily,
       this.fontSize});
 
+  /// Specifies the value of the radio button.
   late T value;
+
+  /// Specifies the color of the radio button's text.
   late Color? textColor;
+
+  /// Specifies the message of the radio button.
   late String radioButtonMessage;
+
+  /// Specifies the font size of the radio button's text.
   late double? fontSize;
+
+  /// Specifies the font family of the radio button's text.
   late String? fontFamily;
 }
 
+/// Specifies the intention of the radio buttons (row or column).
 enum Intention { row, column }

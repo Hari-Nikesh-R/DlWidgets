@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
+/// Represents a custom card view widget.
 class DlCardView extends StatefulWidget {
+
+  /// Constructs a DlCardView widget.
   const DlCardView({super.key, required this.child});
+
+  /// Specifies the child widget to be displayed within the card view.
   final Widget child;
 
   @override
