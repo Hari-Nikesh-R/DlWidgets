@@ -54,7 +54,7 @@ class _DlTextFormFieldState extends State<DlTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: widget.isCenter??false ? EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/3.5) : EdgeInsets.zero, child: Padding(padding: EdgeInsets.all(12), child: TextFormField(
+    return Padding(padding: widget.isCenter??false ? EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/3.5) : EdgeInsets.zero, child: Padding(padding: const EdgeInsets.all(12), child: TextFormField(
       controller: widget.input.textFieldController,
       obscureText:isObscured,
       maxLines: 1,
