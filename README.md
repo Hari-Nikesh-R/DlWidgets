@@ -4,10 +4,8 @@ DlWidgets is a Flutter library that aims to simplify the development process by 
 
 ## Features
 
-- **Feature 1:** Describe the first feature of your library.
-- **Feature 2:** Describe the second feature of your library.
-- **Feature 3:** Describe the third feature of your library.
-
+- **Design Widgets:** Reduced time in developing password text field and normal text field. All the Widgets are pre-built developed.
+- 
 ## Installation
 
 To use DlWidgets in your Flutter project, you need to add it as a dependency in your `pubspec.yaml` file:
@@ -27,17 +25,16 @@ import 'package:dl_widgets/dl_widgets.dart';
 
 Now, you can start using the DlWidgets library. Here's an example of how to use one of the widgets:
 
-DlButton(
-  text: 'Click me',
-  onPressed: () {
-    // Handle button press
-  },
+DlButton(buttonName: "BUTTON TEXT", 
+    size: ButtonSize.small,
+    onPressed: (){ },
+    buttonColor:  #COLOR OF THE BUTTON
 ),
 
 For more detailed information on how to use each widget, refer to the API documentation.
 
 ## Contributing
-Contributions to DlWidgets are welcome! If you find a bug or have a feature suggestion, please open an issue on the GitHub repository. If you would like to contribute code, please follow the guidelines in the CONTRIBUTING.md file.
+Contributions to DlWidgets are welcome! If you find a bug or have a feature suggestion, please open an issue on the GitHub repository.
 
 ## License
 This library is available under the MIT License.
