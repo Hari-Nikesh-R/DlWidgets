@@ -1,5 +1,6 @@
-import 'package:dlwidgets/dlwidgets.dart';
 import 'package:flutter/material.dart';
+
+import '../dlwidgets.dart';
 
 class AlertDialogHelper {
   AlertDialogHelper(this.context, this.dialogWidget);
