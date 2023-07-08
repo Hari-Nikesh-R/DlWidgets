@@ -150,6 +150,8 @@ class _State extends State<LoginPage> {
 }
 ```
 <img src = "https://drive.google.com/uc?export=view&id=1xOUPkoIE-xSTlOgdditEr6e4f0RQCn5W" >
+<img src = "https://drive.google.com/uc?export=view&id=1ZK7kJkI2tyWWJrazaxGt4hXDLCNp_tU3" >
+<img src = "https://drive.google.com/uc?export=view&id=11_7BW4vX0WYxdu9tFxQRcq8rDJG6YQL5" >
 For more detailed information on how to use each widget, refer to the API documentation.
 
 ## Contributing
