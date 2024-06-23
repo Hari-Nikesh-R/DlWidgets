@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 class DlButton extends StatelessWidget {
   /// Constructs a DlButton widget.
   const DlButton(
-      {super.key, required this.buttonName, required this.size, required this.buttonColor, required this.onPressed});
+      {super.key,
+      required this.buttonName,
+      required this.size,
+      required this.buttonColor,
+      required this.onPressed,
+      this.buttonTextColor});
 
   /// Specifies the name of the button.
   final String buttonName;
@@ -15,6 +20,9 @@ class DlButton extends StatelessWidget {
 
   /// Specifies the background color of the button.
   final Color buttonColor;
+
+  /// Specifies the text color of the button.
+  final Color? buttonTextColor;
 
   /// Specifies the callback function to be executed when the button is pressed.
   final VoidCallback onPressed;
@@ -55,9 +63,9 @@ class DlButton extends StatelessWidget {
       ),
       child: Padding(padding: EdgeInsets.symmetric(
           horizontal: selectSize(context), vertical: 10),
-          child: Text(buttonName, style:
-          const TextStyle(
-            fontSize: 18,
+          child: Text(buttonName, style: TextStyle(
+                color: buttonTextColor,
+                fontSize: 18,
             fontWeight: FontWeight.bold,
             fontStyle: FontStyle.normal,
           ))
