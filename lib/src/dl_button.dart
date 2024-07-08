@@ -10,7 +10,8 @@ class DlButton extends StatelessWidget {
       required this.size,
       required this.buttonColor,
       required this.onPressed,
-      this.buttonTextColor});
+      this.buttonTextColor,
+      this.buttonImpl});
 
   /// Specifies the name of the button.
   final String buttonName;
@@ -26,6 +27,8 @@ class DlButton extends StatelessWidget {
 
   /// Specifies the callback function to be executed when the button is pressed.
   final VoidCallback onPressed;
+
+  final DlButtonImpl? buttonImpl;
 
   /// Determines the size of the button based on the specified size and the device's width.
   double selectSize(BuildContext context) {
@@ -55,7 +58,8 @@ class DlButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: onPressed,
+    return ElevatedButton(
+      onPressed: buttonImpl?.disable ?? false ? null : onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: buttonColor, elevation: 8, shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0)
@@ -77,4 +81,9 @@ class DlButton extends StatelessWidget {
 /// Specifies the size options for the DlButton widget.
 enum ButtonSize{
   large, medium, small
+}
+
+class DlButtonImpl {
+  DlButtonImpl(this.disable);
+  bool disable;
 }
