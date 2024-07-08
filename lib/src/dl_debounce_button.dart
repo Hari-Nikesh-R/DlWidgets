@@ -10,6 +10,7 @@ class DlDebounceButton extends StatefulWidget {
     required this.buttonTextColor,
     required this.selectSize,
     required this.onPressed,
+    this.debounceButtonImpl,
   });
 
   final String buttonName;
@@ -17,19 +18,20 @@ class DlDebounceButton extends StatefulWidget {
   final Color buttonTextColor;
   final double Function(BuildContext) selectSize;
   final VoidCallback onPressed;
+  final DlDebounceButtonImpl? debounceButtonImpl;
 
   @override
   State<DlDebounceButton> createState() => _DlDebounceButtonState();
 }
 
 class _DlDebounceButtonState extends State<DlDebounceButton> {
-  late DlDebounceButtonImpl _debouncer;
+  late Debounce _debouncer;
 
   @override
   void initState() {
     super.initState();
-    _debouncer = DlDebounceButtonImpl(
-        debounceInMillis: 500); // Adjust debounce time as needed
+    _debouncer =
+        Debounce(debounceInMillis: 500); // Adjust debounce time as needed
   }
 
   void _handleOnPressed() {
@@ -39,7 +41,8 @@ class _DlDebounceButtonState extends State<DlDebounceButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: _handleOnPressed,
+      onPressed:
+          widget.debounceButtonImpl?.disable ?? false ? null : _handleOnPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: widget.buttonColor,
         elevation: 8,
@@ -67,10 +70,16 @@ class _DlDebounceButtonState extends State<DlDebounceButton> {
 }
 
 class DlDebounceButtonImpl {
-  DlDebounceButtonImpl({this.debounceInMillis});
+  DlDebounceButtonImpl({this.disable});
 
+  bool? disable = false;
+}
+
+class Debounce {
   Timer? _timer;
   int? debounceInMillis;
+
+  Debounce({this.debounceInMillis});
 
   void run(VoidCallback action) {
     _timer?.cancel();
