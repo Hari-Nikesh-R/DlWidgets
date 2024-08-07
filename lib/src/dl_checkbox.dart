@@ -1,4 +1,5 @@
 import 'dart:collection';
+
 import 'package:flutter/material.dart';
 
 ///This documentation explains the purpose and functionality of each class, method, and property in the provided code. It provides information about the constructors, parameters, and return types, as well as the enums used for specifying checkbox orientation and shape.
@@ -9,7 +10,13 @@ import 'package:flutter/material.dart';
 class DlCheckBox extends StatefulWidget {
 
   /// Constructs a DlCheckBox widget.
-  const DlCheckBox({super.key, required, required this.checkBoxOrientation, required this.dlCheckBoxImplList, this.checkBoxShape });
+  const DlCheckBox(
+      {super.key,
+      required,
+      required this.checkBoxOrientation,
+      required this.dlCheckBoxImplList,
+      this.checkBoxShape,
+      this.onChangeValue});
 
   /// Specifies the orientation of the checkboxes (row or column).
   final CheckBoxOrientation checkBoxOrientation;
@@ -19,6 +26,9 @@ class DlCheckBox extends StatefulWidget {
 
   /// Specifies the shape of the checkbox (round or box).
   final CheckBoxShape? checkBoxShape;
+
+  /// Specific function to expose the checkbox state and index to perform desired operations.
+  final Function(bool? value, int index)? onChangeValue;
 
   @override
   State<DlCheckBox> createState() => _DlCheckBoxState();
@@ -39,11 +49,14 @@ class _DlCheckBoxState extends State<DlCheckBox> {
     List<Widget> list = [];
     for(var index=0;index<widget.dlCheckBoxImplList.length;index++) {
         list.add(Row(children: [Checkbox(
-          onChanged: (value){
+          onChanged: (value) {
             setState(() {
               _values[widget.dlCheckBoxImplList[index].checkBoxMessage] = value??false;
               debugPrint(_values[widget.dlCheckBoxImplList[index].checkBoxMessage].toString());
             });
+            if (widget.onChangeValue != null) {
+              widget.onChangeValue!(value, index);
+            }
           },
           activeColor: widget.dlCheckBoxImplList[index].activeColor??Colors.blue,
           value: _values[widget.dlCheckBoxImplList[index].checkBoxMessage],
