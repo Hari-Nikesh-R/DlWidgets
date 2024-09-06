@@ -11,3 +11,4 @@ export '/src/dl_alert_dialog.dart';
 export '/src/dl_dialog_helper.dart';
 export '/src/dl_debounce_button.dart';
 export '/src/dl_hover_button.dart';
+export '/src/dl_search.dart';
